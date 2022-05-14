@@ -7,7 +7,7 @@
 U ovoj vježbi kreirat ćemo jednostavanu REST API aplikaciju koji simulira prodaju
 proizvoda na samoposlužnom aparatu (eng. vending machine).
 
-![](/img/fastapi_pydantic.png)
+![](/img/vending_machine.jpg)
 
 Za pohađanje ove vježbe potrebno je poznavati osnove objektno orijentiranog
 programiranja, osnove rada u Windows cmdu ili Linux bashu te poznavanje rada u
