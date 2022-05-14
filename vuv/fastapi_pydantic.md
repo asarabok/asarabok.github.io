@@ -13,14 +13,15 @@ Za pohađanje ove vježbe potrebno je poznavati osnove objektno orijentiranog
 programiranja, osnove rada u Windows cmdu ili Linux bashu te poznavanje rada u
 jednom od code editora (PyCharm, VS Code, Sublime Text, ...). Na računalu je
 potrebno imati instaliran `Python` (u trenutku pisanja vježbe najnovija verzija
-dostupna za Windows je `3.10.4`, moguće ga je preuzeti sa <https://www.python.org>),
-`pip` upravitelj Python paketa (dolazi u komletu sa Pythonom) te globalno
+dostupna za Windows je `3.10.4`, moguće ga je preuzeti sa [https://www.python.org](https://www.python.org){:target="\_blank"}),
+`pip` upravitelj Python paketa (dolazi u kompletu sa Pythonom) te globalno
 instaliran `virtualenv` paket za kreiranje virtualnih Python okruženja
 (`pip install virtualenv`).
-Code editor koji ćemo koristiti u vježbi je VS Code - <https://code.visualstudio.com>.
+Code editor koji ćemo koristiti u vježbi je VS Code - [https://code.visualstudio.com](https://code.visualstudio.com){:target="\_blank"}.
 Python aplikacija koju ćemo izraditi će biti pogonjena sa sljedećim tehnologijama:
 - `FastAPI` - Python web framework za izradu API-a
 - `Pydantic` - alat za validaciju podataka
+- `SQLAlchemy` - alat za komunikaciju Python aplikacije sa relacijskim bazama podataka (PostgreSQL)
 
 ### 2. Inicijalni setup aplikacije
 Otvoriti `cmd` i provjeriti dali je instaliran Python.
