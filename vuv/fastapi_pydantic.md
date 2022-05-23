@@ -4,8 +4,9 @@
 
 ### 1. Uvod
 
-U ovoj vježbi kreirat ćemo jednostavanu REST API aplikaciju koji simulira prodaju
-proizvoda na samoposlužnom aparatu (eng. vending machine). Upute su rađene za rad na
+U ovoj vježbi kreirat ćemo jednostavanu REST API aplikaciju koji simulira rad
+samoposlužnog aparata (eng. vending machine). Cilje vježbe je upoznati se sa
+FastAPI-em i Pydantic-om kroz jednostavne API endpointe.Upute su rađene za rad na
 Windows 10 OS-u.
 
 ![](/img/vending_machine.jpg)
@@ -57,48 +58,10 @@ Upravljanje sa virtualnim okruženjima je jednostavno, koristit ćemo 2 naredbe 
 - Aktivacija -  `venv\Scripts\activate`
 - Deaktivacija - `deactivate`
 
-Budući da je virtualno okruženje kreirano potrebno ga je aktivirati kako bi mogliSada je potrebno popisati i instalirati sve potrebne Python biblioteke za rad aplikacije u
-virtualnom okruženje sa `pip`-om. Potrebne biblioteke sa odgovarajućim verzijama
-su zapisane u `.txt` datotekama unutar `requirements` foldera tako da i drugi
-developeri mogu jednostavno setup-ati aplikaciju na svom računalu (isto tako da
-i devopsi mogu postaviti aplikaciju na serversku infrastrukturu).
+Budući da je virtualno okruženje kreirano potrebno ga je aktivirati kako bi mogli
+pokrenuti aplikaciju.
 
-Struktura datoteka unutar `requirements` foldera:
 ```
-- requirements
-    - base.txt
-    - dev.txt
-    - test.txt
-```
-
-Lista biblioteka je odvojena u 3 datoteke iz razloga što želimo razlikovati biblioteke
-za različita okruženja u kojima će se koristiti aplikacija.
-Osnovne biblioteke koje su nužan preduvjet za rad aplikacije su zapisane u
-datoteci `base.txt` - svako okruženje mora imati biblioteke sa odgovarajućim
-verzijama iz ove datoteke.
-Prvo okruženje u kojem će se koristiti aplikacija je razvojno (dev) okruženje
-koje je specifično po tome što zahtjeva biblioteke za formatiranje i lintanje
-(prepoznavanje stilskih pokrešaka u kodu) koda. Ove biblioteke nisu potrebne niti
-su preduvjet za rad aplikacije stoga nema potrebe da budu u `base.txt`-u.
-U datoteci `test.txt` se nalaze biblioteke koje su nužne za pokretanje unit
-testova.
-
-Budući da radimo u dev okruženju kreirat instalirat ćemo biblioteke iz datoteke
-`requirements/dev.txt` datoteke:
-```cmd
-pip install -r requirements\dev.txt
-```
-U `cmd`-u će se ispisati svaka bibloteka koja se trenutno instalira te na kraju
-instalacije će se ispisati sve biblioteke koje su se instalirale te greške
-koje su se dogodile tijekom instalacije.
-
-Sada opet možemo provjeriti listu svih instaliranih biblioteka da potvrdimo da su
-se instalirale sve biblioteke
-```
-pip list
-```
-raditi nad njim:
-```cmd
 venv\Scripts\activate
 ```
 
@@ -130,6 +93,8 @@ koji će sadržati izvorni kod Python aplikacije.
 mkdir vend_api && cd vend_api
 ```
 
+![](/img/vend_api_again.gif)
+
 Sada struktura dosad kreiranih foldera izgleda ovako:
 ```
 - vend_api
@@ -139,12 +104,15 @@ Sada struktura dosad kreiranih foldera izgleda ovako:
         - ...
     - vend_api
 ```
+
 Preuzeti izvorni kod aplikacije sa naredbom:
 ```cmd
 git clone https://github.com/asarabok/vend_fastapi.git .
 ```
 
-Sada je potrebno popisati i instalirati sve potrebne Python biblioteke za rad aplikacije u
+![](/img/git_clone.gif)
+
+Sada je potrebno instalirati sve potrebne Python biblioteke za rad aplikacije u
 virtualnom okruženje sa `pip`-om. Potrebne biblioteke sa odgovarajućim verzijama
 su zapisane u `.txt` datotekama unutar `requirements` foldera tako da i drugi
 developeri mogu jednostavno setup-ati aplikaciju na svom računalu (isto tako da
@@ -155,7 +123,6 @@ Struktura datoteka unutar `requirements` foldera:
 - requirements
     - base.txt
     - dev.txt
-    - test.txt
 ```
 
 Lista biblioteka je odvojena u 3 datoteke iz razloga što želimo razlikovati biblioteke
@@ -177,15 +144,20 @@ Budući da radimo u dev okruženju kreirat instalirat ćemo biblioteke iz datote
 pip install -r requirements\dev.txt
 ```
 
+![](/img/pip_install.gif)
+
 U `cmd`-u će se ispisati svaka bibloteka koja se trenutno instalira te na kraju
 instalacije će se ispisati sve biblioteke koje su se instalirale te greške
 koje su se dogodile tijekom instalacije.
 
 Sada opet možemo provjeriti listu svih instaliranih biblioteka da potvrdimo da su
 se instalirale sve biblioteke.
+
 ```
 pip list
 ```
+
+![](/img/pip_list_installed.gif)
 
 Kako je aplikacija dizajnirana na način da se može koristiti na više okruženja,
 potrebno je kreirati datoteku `.env` u root-u projekta. U toj datoteci ćemo
@@ -206,5 +178,6 @@ JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_DAYS = 7
 ```
 
-Kreirati novu PostgreSQL bazu te upisati pripadajuće podatke za spajanje
-u environment varijable  `DATABASE_USER`, `DATABASE_PASS`, `DATABASE_HOST` i `DATABASE_NAME`.
+Kreirati novu PostgreSQL bazu na računalu te upisati pripadajuće podatke za spajanje
+u environment varijable  `DATABASE_USER`, `DATABASE_PASS`, `DATABASE_HOST` i `DATABASE_NAME` u datoteci
+`.env`.
