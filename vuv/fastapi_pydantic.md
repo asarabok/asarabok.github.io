@@ -26,7 +26,7 @@ Python aplikacija koju ćemo izraditi će biti pogonjena sa sljedećim tehnologi
 - `SQLAlchemy` - alat za komunikaciju Python aplikacije sa relacijskim bazama podataka (PostgreSQL)
 Izvorni kod aplikacije se nalazi na Github repozitoriju.
 
-### 2. Postavljanje Python virtualng okruženja
+### 2. Postavljanje Python virtualnog okruženja
 Otvoriti `cmd` i provjeriti dali je instaliran Python.
 ```cmd
 python --version
