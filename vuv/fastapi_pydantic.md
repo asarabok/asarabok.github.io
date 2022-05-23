@@ -5,8 +5,8 @@
 ### 1. Uvod
 
 U ovoj vježbi kreirat ćemo jednostavanu REST API aplikaciju koji simulira rad
-samoposlužnog aparata (eng. vending machine). Cilje vježbe je upoznati se sa
-FastAPI-em i Pydantic-om kroz jednostavne API endpointe.Upute su rađene za rad na
+samoposlužnog aparata (eng. vending machine). Cilj vježbe je upoznati se sa
+FastAPI-em i Pydantic-om kroz jednostavne API endpointe. Upute su rađene za rad na
 Windows 10 OS-u.
 
 ![](/img/vending_machine.jpg)
@@ -71,7 +71,7 @@ Nakon pokrenute naredbe pojavit će se `(venv)` sa lijeve strane putanje
 u `cmd`-u što je indikator trenutno aktivnog virtualnog okruženja
 
 Svako novo Python virtualno okruženje dolazi sa tri predinstalirane biblioteke -
-`pip`, `setuptools` i `whelel`. Navedene biblioteke se koriste kod
+`pip`, `setuptools` i `wheel`. Navedene biblioteke se koriste kod
 preuzimanja, kreiranja i instalacije Python biblioteka. Za potrebe ove
 aplikacije ih nećemo koristiti stoga se nećemo kod njih zadržavati.
 Provjeru instaliranih biblioteka unutar Python virtualnog okruženja moguće je sa
@@ -113,7 +113,7 @@ git clone https://github.com/asarabok/vend_fastapi.git .
 ![](/img/git_clone.gif)
 
 Sada je potrebno instalirati sve potrebne Python biblioteke za rad aplikacije u
-virtualnom okruženje sa `pip`-om. Potrebne biblioteke sa odgovarajućim verzijama
+virtualnom okruženjU sa `pip`-om. Potrebne biblioteke sa odgovarajućim verzijama
 su zapisane u `.txt` datotekama unutar `requirements` foldera tako da i drugi
 developeri mogu jednostavno setup-ati aplikaciju na svom računalu (isto tako da
 i devopsi mogu postaviti aplikaciju na serversku infrastrukturu).
@@ -125,7 +125,7 @@ Struktura datoteka unutar `requirements` foldera:
     - dev.txt
 ```
 
-Lista biblioteka je odvojena u 3 datoteke iz razloga što želimo razlikovati biblioteke
+Lista biblioteka je odvojena u 2 datoteke iz razloga što želimo razlikovati biblioteke
 za različita okruženja u kojima će se koristiti aplikacija.
 Osnovne biblioteke koje su nužan preduvjet za rad aplikacije su zapisane u
 datoteci `base.txt` - svako okruženje mora imati biblioteke sa odgovarajućim
@@ -134,8 +134,6 @@ Prvo okruženje u kojem će se koristiti aplikacija je razvojno (dev) okruženje
 koje je specifično po tome što zahtjeva biblioteke za formatiranje i lintanje
 (prepoznavanje stilskih pokrešaka u kodu) koda. Ove biblioteke nisu potrebne niti
 su preduvjet za rad aplikacije stoga nema potrebe da budu u `base.txt`-u.
-U datoteci `test.txt` se nalaze biblioteke koje su nužne za pokretanje unit
-testova.
 
 Budući da radimo u dev okruženju kreirat instalirat ćemo biblioteke iz datoteke
 `requirements/dev.txt` datoteke:
@@ -165,10 +163,10 @@ dodijeliti vrijednosti environment varijablama potrebnim za rad. Zalijepiti slje
 sadržaj u datoteku `.env`:
 
 ```
-DATABASE_USER = 'admin'
-DATABASE_PASS = 'admin'
-DATABASE_HOST = 'localhost'
-DATABASE_NAME = 'vuv_vend'
+DATABASE_USER = ''
+DATABASE_PASS = ''
+DATABASE_HOST = ''
+DATABASE_NAME = ''
 
 DATABASE_URL = 'postgresql://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}'
 
@@ -178,6 +176,55 @@ JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_DAYS = 7
 ```
 
-Kreirati novu PostgreSQL bazu na računalu te upisati pripadajuće podatke za spajanje
-u environment varijable  `DATABASE_USER`, `DATABASE_PASS`, `DATABASE_HOST` i `DATABASE_NAME` u datoteci
-`.env`.
+Upisati pripadajuće podatke za spajanje u environment varijable
+`DATABASE_USER`, `DATABASE_PASS`, `DATABASE_HOST` i `DATABASE_NAME` u datoteci
+`.env` dobivene od predavača.
+
+Sada imamo potpuno podešenu aplikaciju i možemo ju pokrenuti. Otvoriti VS Code te
+podesiti putanju do virtualnog okruženja koje smo kreirali u prethodnom poglavlju.
+
+![](/img/vscode_venv.gif)
+
+Sada VS Code zna koju verziju Pythona i biblioteke imamo instalirane te nam može detektirati
+pogreške u kodu.
+
+Pokrenimo aplikaciju pritiskom tipke F5 ili klikom na zeleni play gumb unutar izbornika
+"Run and debug"
+
+![](/img/run_app.gif)
+
+U terminalu u donjem dijelu VS Code-a možemo vidjeti output pokrenute aplikacije koji
+nam kaže da je aplikacija pokrenuta na URL-U `http://127.0.0.1:8080`. Otvorimo
+taj URL u pregledniku
+
+![](/img/home.jpg)
+
+Očekivano, dobijamo poruku Not found budući da u aplikaciji nije kreiran endpoint
+sa tom adresom.
+
+Jedna od najpopularnijih FastAPI-evih mogućnosti je da "out of box" generira
+dokumentaciju za aplikaciju (OpenAPI schemu), tj GUI sa listom svih dodanih endpointa
+na kojem je moguće pingati svaki endpoint te provjeriti strukturu svakog. OpenAPI definira standardni
+opis sučelja za HTTP API koji ne ovisi o programskom jeziku, ali omogućuje ljudima
+i računalima da otkriju i razumiju mogućnosti usluge bez potrebe za pristupom izvornom kodu,
+dodatnoj dokumentaciji ili inspekciji mrežnog prometa.
+
+Pristup Open API-u je moguć na
+URL-u `http://127.0.0.1:8080/docs`
+
+![](/img/docs.jpg)
+
+Unutar aplikacije u root folder-u kreirana je skripta `create_user.py`
+koja kreira novog usera i novu vending mašinu nad kojom postaje vlasnik.
+Pokrenuti skriptu sa naredbom
+
+```
+python create_user.py Ivo Ivic ivo.ivic@example.com Pass12345
+```
+
+![](/img/create_user.gif)
+
+Skripta prima 4 parametra - ime, prezime, email i password i oni su obavezni za
+kreiranje usera / mašine.
+
+U ovom trenutku aplikacija je spremna za rad.
