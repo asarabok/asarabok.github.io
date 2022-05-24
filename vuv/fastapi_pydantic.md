@@ -20,7 +20,8 @@ dostupna za Windows je `3.10.4`, moguće ga je preuzeti sa [https://www.python.o
 instaliran `virtualenv` paket za kreiranje virtualnih Python okruženja
 (`pip install virtualenv`).
 Code editor koji ćemo koristiti u vježbi je VS Code - [https://code.visualstudio.com](https://code.visualstudio.com){:target="\_blank"}.
-Python aplikacija koju ćemo izraditi će biti pogonjena sa sljedećim tehnologijama:
+HTTP klijent za kreiranje requestova -[https://www.postman.com](https://www.postman.com){:target="\_blank"}.
+Python aplikacija koju ćemo izraditi će biti pogonjena sa sljedećim tehnologijama: 
 - `FastAPI` - Python web framework za izradu API-a
 - `Pydantic` - alat za validaciju podataka
 - `SQLAlchemy` - alat za komunikaciju Python aplikacije sa relacijskim bazama podataka (PostgreSQL)
@@ -182,6 +183,12 @@ Upisati pripadajuće podatke za spajanje u environment varijable
 
 Sada imamo potpuno podešenu aplikaciju i možemo ju pokrenuti. Otvoriti VS Code te
 podesiti putanju do virtualnog okruženja koje smo kreirali u prethodnom poglavlju.
+Da bi se moglo postaviti virtualno okruženje potrebno je otvoriti bilo koju `.py`
+datoteku (npr. `main.py`) nakon čega će se u donjem desnog uglu u alatnog traci 
+pojaviti Python 3.10.4. Klik na Python 3.10.4 otvara izbornik i nudi izbor Python interpretera.
+Mi ćemo kliknuti na "Enter interpreter path.. -> Find.." te odabrati python.exe iz `venv/Scripts/python.exe`.
+Sada će se u donjem desnog uglu u alatnoj traci CS Code-a pojaviti `3.10.4. ("venv": venv)`
+kao indikator uspješno povezanog virtualnog okruženja.
 
 ![](/img/vscode_venv.gif)
 
@@ -228,3 +235,18 @@ Skripta prima 4 parametra - ime, prezime, email i password i oni su obavezni za
 kreiranje usera / mašine.
 
 U ovom trenutku aplikacija je spremna za rad.
+
+### 4. ZADACI
+1. Preuzeti OpenAPI Schemu sa [http://127.0.0.1:8080/docs ](http://127.0.0.1:8080/docs ){:target="\_blank"} klikom na `/openapi.json`
+te ju uvesti u Postman-a
+2. U Postmanu kreirati globalne varijable nad Vend API kolekcijom:
+ - `baseUrl` - `http://127.0.0.1:8080`
+ - `token` - ``
+3. Na endpontu za login u body-u postaviti `email` i `password` kreiran preko `create_user.py` skripte iz prethodnog poglavlja. Pod dijelom `Tests`
+istog endpointa postaviti sljedeći kod:
+```javascript
+var response = JSON.parse(responseBody);
+pm.collectionVariables.set("token", response.token);
+```
+4. Na endpontu za kreiranje kategorije proizvoda kreirati proizvoljnu kategoriju (pripaziti na dodavanje tokena u header). Na listi svih kategorija proizvoda provjeriti dali se nalazi kreirana kategorija. Ponoviti proceduru i za proizvod.
+5. Dodati planogram na svoju mašinu sa 20 kolona sa prizvodima i cijenama proizvoda po želji
