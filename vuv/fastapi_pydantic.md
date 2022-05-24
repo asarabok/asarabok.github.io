@@ -1,12 +1,12 @@
-## REST API sa FastApi & Pydanticž
+## REST API sa FastAPI & Pydantic
 
 ![](/img/fastapi_pydantic.png)
 
 ### 1. Uvod
 
-U ovoj vježbi kreirat ćemo jednostavanu REST API aplikaciju koji simulira rad
-samoposlužnog aparata (eng. vending machine). Cilj vježbe je upoznati se sa
-FastAPI-em i Pydantic-om kroz jednostavne API endpointe. Upute su rađene za rad na
+U ovoj vježbi kreirat ćemo jednostavanu REST API aplikaciju sa CRUD operacijama
+koja simulira rad samoposlužnog aparata (eng. vending machine). Cilj vježbe je upoznati se sa
+FastAPI-em i Pydantic-om kroz jednostavne API endpointe. Upute su rađene za Python početnike na
 Windows 10 OS-u.
 
 ![](/img/vending_machine.jpg)
