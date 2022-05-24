@@ -238,15 +238,16 @@ U ovom trenutku aplikacija je spremna za rad.
 
 ### 4. ZADACI
 1. Preuzeti OpenAPI Schemu sa [http://127.0.0.1:8080/docs ](http://127.0.0.1:8080/docs ){:target="\_blank"} klikom na `/openapi.json`
-te ju uvesti u Postman-a
-2. U Postmanu kreirati globalne varijable nad Vend API kolekcijom:
+te ju uvesti u Postman-a.
+2. U Postmanu kreirati varijable u Vend API kolekciji:
  - `baseUrl` - `http://127.0.0.1:8080`
  - `token` - ``
-3. Na endpontu za login u body-u postaviti `email` i `password` kreiran preko `create_user.py` skripte iz prethodnog poglavlja. Pod dijelom `Tests`
+3. Na endpontu za login u body-u postaviti `email` i `password` kreirane preko `create_user.py` skripte iz prethodnog poglavlja. Pod dijelom `Tests`
 istog endpointa postaviti sljedeći kod:
-```javascript
-var response = JSON.parse(responseBody);
-pm.collectionVariables.set("token", response.token);
-```
+    ```javascript
+    var response = JSON.parse(responseBody);
+    pm.collectionVariables.set("token", response.token);
+    ```
+    Sendati request te provjeriti dali se zapisala vrijednost tokena u varijablu `token`.
 4. Na endpontu za kreiranje kategorije proizvoda kreirati proizvoljnu kategoriju (pripaziti na dodavanje tokena u header). Na listi svih kategorija proizvoda provjeriti dali se nalazi kreirana kategorija. Ponoviti proceduru i za proizvod.
 5. Dodati planogram na svoju mašinu sa 20 kolona sa prizvodima i cijenama proizvoda po želji
