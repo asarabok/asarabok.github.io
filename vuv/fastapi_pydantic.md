@@ -15,7 +15,7 @@ Za pohađanje ove vježbe potrebno je poznavati osnove objektno orijentiranog
 programiranja, osnove rada u Windows cmdu ili Linux bashu te poznavanje rada u
 jednom od code editora (PyCharm, VS Code, Sublime Text, ...). Na računalu je
 potrebno imati instaliran `Python` (u trenutku pisanja vježbe najnovija verzija
-dostupna za Windows je `3.10.4`, moguće ga je preuzeti sa [https://www.python.org](https://www.python.org){:target="\_blank"}),
+dostupna za Windows je `3.11.3`, moguće ga je preuzeti sa [https://www.python.org](https://www.python.org){:target="\_blank"}),
 `pip` upravitelj Python paketa (dolazi u kompletu sa Pythonom) te globalno
 instaliran `virtualenv` paket za kreiranje virtualnih Python okruženja
 (`pip install virtualenv`).
@@ -159,23 +159,8 @@ pip list
 ![](/img/pip_list_installed.gif)
 
 Kako je aplikacija dizajnirana na način da se može koristiti na više okruženja,
-potrebno je kreirati datoteku `.env` u root-u projekta. U toj datoteci ćemo
-dodijeliti vrijednosti environment varijablama potrebnim za rad. Zalijepiti sljedeći
-sadržaj u datoteku `.env`:
-
-```
-DATABASE_USER = ''
-DATABASE_PASS = ''
-DATABASE_HOST = ''
-DATABASE_NAME = ''
-
-DATABASE_URL = 'postgresql://${DATABASE_USER}:${DATABASE_PASS}@${DATABASE_HOST}/${DATABASE_NAME}'
-
-PAGE_SIZE = 10
-SECRET = "secret"
-JWT_ALGORITHM = "HS256"
-JWT_EXPIRE_DAYS = 7
-```
+potrebno je kreirati datoteku `.env` iz predloška `.env-example` u root-u projekta. U toj datoteci ćemo
+dodijeliti vrijednosti environment varijablama potrebnim za rad. 
 
 Upisati pripadajuće podatke za spajanje u environment varijable
 `DATABASE_USER`, `DATABASE_PASS`, `DATABASE_HOST` i `DATABASE_NAME` u datoteci
@@ -185,9 +170,9 @@ Sada imamo potpuno podešenu aplikaciju i možemo ju pokrenuti. Otvoriti VS Code
 podesiti putanju do virtualnog okruženja koje smo kreirali u prethodnom poglavlju.
 Da bi se moglo postaviti virtualno okruženje potrebno je otvoriti bilo koju `.py`
 datoteku (npr. `main.py`) nakon čega će se u donjem desnog uglu u alatnog traci 
-pojaviti Python 3.10.4. Klik na Python 3.10.4 otvara izbornik i nudi izbor Python interpretera.
+pojaviti Python {verzija Pythona}. Klik na Python {verzija Pythona} otvara izbornik i nudi izbor Python interpretera.
 Mi ćemo kliknuti na "Enter interpreter path.. -> Find.." te odabrati python.exe iz `venv/Scripts/python.exe`.
-Sada će se u donjem desnog uglu u alatnoj traci CS Code-a pojaviti `3.10.4. ("venv": venv)`
+Sada će se u donjem desnog uglu u alatnoj traci CS Code-a pojaviti `{verzija Pythona}. ("venv": venv)`
 kao indikator uspješno povezanog virtualnog okruženja.
 
 ![](/img/vscode_venv.gif)
@@ -223,7 +208,7 @@ URL-u `http://127.0.0.1:8080/docs`
 
 Unutar aplikacije u root folder-u kreirana je skripta `create_user.py`
 koja kreira novog usera i novu vending mašinu nad kojom postaje vlasnik.
-Pokrenuti skriptu sa naredbom
+Pokrenuti skriptu sa naredbom 
 
 ```
 python create_user.py Ivo Ivic ivo.ivic@example.com Pass12345
